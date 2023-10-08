@@ -1,3 +1,5 @@
+from random import *
+from timeit import timeit
 def hairbrush(li):
     n = len(li)
     step = n
@@ -10,8 +12,10 @@ def hairbrush(li):
             if li[i] > li[i + step]:
                 li[i], li[i + step] = li[i + step], li[i]
                 flag = True
-                print(li, step, i)
             i+=1
     return li
-a = [999, 5, 6, 2, 33, 755, 42, 454, 324, 22, 2345, 3, 223, 43]
-print(hairbrush(a))
+a = [randint(1, 10000) for i in range(50)]
+print("Массив до сортировки: " + a)
+print("Массив после сортировки: " + hairbrush(a))
+time = timeit(hairbrush, number=1)
+print("Время выполнения = "+time)
